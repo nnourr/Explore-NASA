@@ -1,0 +1,67 @@
+:root {
+    --photo-container-color: #1d1d1d;
+}
+
+.photoContainer {
+    min-width: 300px;
+    flex-basis: 33.3333333333333%;
+    height: auto;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: var(--photo-container-color);
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.photo {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.title {
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px 15px;
+    font-size: 26px;
+    width: 80%;
+}
+
+.date {
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px 15px;
+    margin-bottom: 15px;
+}
+
+.explanation {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+    margin: 5px 10px;
+    margin-bottom: 15px;
+}
+
+.infoBox {
+    position: relative;
+}
+
+.heart {
+    height: 24px;
+    width: 40px;
+    fill: var(--photo-container-color);
+    stroke: whitesmoke;
+    stroke-width: 30px;
+    position: absolute;
+    right: 5%;
+    margin-top: -20px;
+    transform: translateY(35px);
+    display: block;
+    transition: fill .4s ease;
+}
+
+.heartLiked {
+    fill: red;
+    stroke: red;
+}

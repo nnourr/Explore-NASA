@@ -1,0 +1,57 @@
+.handleScrolling {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow-y: auto;
+}
+
+.title {
+    color: whitesmoke;
+    font-size: 46px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px 0;
+}
+
+.description {
+    color: whitesmoke;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loading {
+    background-color: whitesmoke;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0px auto 20px auto;
+    top: 0;
+    position: relative;
+    animation: loading-bounce 1.5s infinite;
+}
+
+@keyframes loading-bounce {
+    0% {
+        transform: translateX(0) scaleY(50%);
+    }
+    25% {
+        transform: translateX(-500%) scaleY(100%);
+    }
+    50% {
+        transform: translateX(0) scaleY(50%);
+    }
+    75% {
+        transform: translateX(+500%) scaleY(100%);
+    }
+
+    100% {
+        transform: translateX(0) scaleY(50%);
+    }
+}
+
+.container {    
+    height: fit-content;
+    width: 100%;
+    position: relative;
+}

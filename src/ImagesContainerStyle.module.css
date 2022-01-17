@@ -1,0 +1,9 @@
+.ImagesContainer {
+    display: flex;
+    width: 100vmin;
+    height: 100%;
+    margin: auto;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+}
