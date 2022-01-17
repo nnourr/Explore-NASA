@@ -48,7 +48,7 @@ function App() {
 	}
 	
 	function loadOnScroll(e) {
-		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= 1;
+		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= 60;
 		let timeOut = false
 		console.log(Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)));
 		if (bottom && !timeOut) {
