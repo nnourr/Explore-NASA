@@ -66,7 +66,7 @@ function App() {
 		<div className={styles.handleScrolling} onScroll={loadOnScroll}>
 			<div className={styles.container}>
 				<h1 className={styles.title}>Explore NASA</h1>
-				<div className={styles.description}>Scroll through NASA's image of the day!</div>
+				<div className={styles.description}>Scroll through NASA's images of the day!</div>
 				<div className={styles.description}>Click to show description, double click to like.</div>
 				<ImagesConainer images={images} handleShowDescription={handleShowDescription} handleLike={handleLike}/>
 			</div>
