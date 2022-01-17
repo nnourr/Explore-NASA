@@ -24,11 +24,13 @@ function App() {
 	
 	const apiKey = process.env.REACT_APP_NASA_KEY;
 	
-
+	const prevDate = new Date()
 
 	function generateImages(numOfImages) {
 		const offsetDate = new Date()
 		offsetDate.setDate(offsetDate.getDate()-images.length)
+		if (prevDate - offsetDate === 0 && images.length > 0) return;
+		prevDate.setDate(offsetDate.toISOString())
 		const startDate= new Date(offsetDate.toISOString())
 		startDate.setDate(startDate.getDate()-numOfImages + 1)
 
@@ -52,9 +54,10 @@ function App() {
 		const scrollThreshold = isMobile? 100:1
 		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= scrollThreshold;
 		let timeOut = false
-		console.log(Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)));
-		if (bottom && !timeOut) {
-			generateImages(10)
+		if (bottom) {
+			if (!timeOut){
+				generateImages(10)
+			}
 			timeOut = true
 			setTimeout(() => {
 				timeOut = false
