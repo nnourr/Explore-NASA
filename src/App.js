@@ -3,6 +3,7 @@ import styles from './appStyles.module.css'
 import React, { useState, useEffect } from "react"
 // import uuidv4 from 'uuid/v4'
 import { v4 as uuidv4 } from 'uuid';
+import {isMobile} from 'react-device-detect';
 
 function App() {
     const [images, updateImages] = useState([])
@@ -48,7 +49,8 @@ function App() {
 	}
 	
 	function loadOnScroll(e) {
-		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= 60;
+		const scrollThreshold = isMobile? 100:1
+		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= scrollThreshold;
 		let timeOut = false
 		console.log(Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)));
 		if (bottom && !timeOut) {
