@@ -4,7 +4,10 @@ import React, { useState, useEffect } from "react"
 import {isMobile} from 'react-device-detect';
 
 function App() {
-    const [images, updateImages] = useState([])
+	const [images, updateImages] = useState([])
+	const LIKES_STORAGE_KEY = "nasaimage.likes"
+	const DATE_STORAGE_KEY = "nasaimage.date"
+	const NUM_OF_IMAGES_TO_GENERATE = 10
 
 	function handleShowDescription(id) {
         const newImages = [...images]
@@ -50,7 +53,7 @@ function App() {
 			const likedPosts = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY))
 			for (let i = numOfImages-1; i >= 0; i--) {
 				let liked = false
-				if (likedPosts.includes(data[i].url)) liked = true
+				if (likedPosts && likedPosts.includes(data[i].url)) liked = true
 				updateImages( prevImages=> {
 					return [...prevImages, {data:data[i], showDescription:false, id:data[i].url, liked:liked}]
 				})
@@ -64,18 +67,16 @@ function App() {
 		let timeOut = false
 		if (bottom && !timeOut) {
 			timeOut = true
-			generateImages(10)
+			generateImages(NUM_OF_IMAGES_TO_GENERATE)
 			setTimeout(() => {
 				timeOut = false
 			}, 10000);
 		}
 	}
 
-	const LIKES_STORAGE_KEY = "nasaimage.likes"
-	const DATE_STORAGE_KEY = "nasaimage.date"
 
     useEffect(() => {
-		generateImages(10)
+		generateImages(NUM_OF_IMAGES_TO_GENERATE)
 		const currDate = new Date()
 		localStorage.setItem(DATE_STORAGE_KEY, currDate.toISOString())
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,8 +86,8 @@ function App() {
 		<div className={styles.handleScrolling} onScroll={loadOnScroll}>
 			<div className={styles.container}>
 				<h1 className={styles.title}>Explore NASA</h1>
-				<div className={styles.description}>Scroll through NASA's images of the day!</div>
-				<div className={styles.description}>Click to show description, double click to like.</div>
+				<p className={styles.description}>Scroll through NASA's images of the day!</p>
+				<p className={styles.description}>Click to show description, double click to like.</p>
 				<ImagesConainer images={images} handleShowDescription={handleShowDescription} handleLike={handleLike}/>
 			</div>
 			<div className={styles.loading}></div>
