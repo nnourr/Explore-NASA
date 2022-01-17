@@ -51,7 +51,7 @@ export default function NasaImage({handleShowDescription, handleLike, image}) {
                 allowFullScreen 
                 allow="encrypted-media" 
                 alt={image.data.title}
-                className={styles.photo}
+                className={`${styles.photo} ${styles.iframe}`}
                 onClick={handleDoubleClick}>
                 </iframe>
             )}

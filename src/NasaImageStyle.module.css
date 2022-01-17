@@ -14,8 +14,11 @@
     border-radius: 20px;
 }
 
-.photo {
+.iframe {
     height: 600px;
+}
+
+.photo {
     width: 100%;
     object-fit: cover;
     border-radius: 20px;
@@ -24,7 +27,7 @@
 .title {
     color: whitesmoke;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 5px 15px;
+    margin: 10px 15px;
     font-size: 26px;
     width: 80%;
 }
