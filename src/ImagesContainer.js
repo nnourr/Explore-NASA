@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import NasaImage from './NasaImage'
 import styles from './ImagesContainerStyle.module.css'
 

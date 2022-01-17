@@ -61,6 +61,7 @@ function App() {
 	
     useEffect(() => {
 		generateImages(10)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
 	<>
