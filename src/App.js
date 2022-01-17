@@ -24,13 +24,9 @@ function App() {
 	
 	const apiKey = process.env.REACT_APP_NASA_KEY;
 	
-	const prevDate = new Date()
-
 	function generateImages(numOfImages) {
 		const offsetDate = new Date()
 		offsetDate.setDate(offsetDate.getDate()-images.length)
-		if (prevDate.getTime() - offsetDate.getTime() === 0 && images.length > 0) return;
-		prevDate.setDate(offsetDate.toISOString())
 		const startDate= new Date(offsetDate.toISOString())
 		startDate.setDate(startDate.getDate()-numOfImages + 1)
 
@@ -46,6 +42,8 @@ function App() {
 					return [...prevImages, {data:data[i], showDescription:false, id:uuidv4(), liked:false}]
 				})
 			}
+			
+			console.log(images);
 		}
 
 	}
