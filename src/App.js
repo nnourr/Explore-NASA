@@ -1,7 +1,8 @@
 import ImagesConainer from "./ImagesContainer"
 import styles from './appStyles.module.css'
 import React, { useState, useEffect } from "react"
-import uuidv4 from 'uuid/v4'
+// import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
     const [images, updateImages] = useState([])
