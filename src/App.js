@@ -83,6 +83,9 @@ function App() {
 	}, [])
 	return (
 	<>
+		<div className={styles.stars}></div>
+		<div className={styles.clouds}></div>
+		<div className={styles.twinkling}></div>
 		<div className={styles.handleScrolling} onScroll={loadOnScroll}>
 			<div className={styles.container}>
 				<h1 className={styles.title}>Explore NASA</h1>
