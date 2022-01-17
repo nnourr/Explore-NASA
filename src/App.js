@@ -8,10 +8,11 @@ function App() {
 	const LIKES_STORAGE_KEY = "nasaimage.likes"
 	const DATE_STORAGE_KEY = "nasaimage.date"
 	const NUM_OF_IMAGES_TO_GENERATE = 10
+	const apiKey = process.env.REACT_APP_NASA_KEY;
+	const lastDate = new Date('1995/06/16')
 
 	function handleShowDescription(id) {
         const newImages = [...images]
-		console.log(newImages);
         const image = newImages.find(image => image.id === id)
         image.showDescription = !image.showDescription
         updateImages(newImages)
@@ -34,13 +35,14 @@ function App() {
         updateImages(newImages)
 	}
 	
-	const apiKey = process.env.REACT_APP_NASA_KEY;
 	
 	function generateImages(numOfImages) {
 		const offsetDate = images.length > 0 ? new Date(localStorage.getItem(DATE_STORAGE_KEY)) : new Date()
 		offsetDate.setDate(offsetDate.getDate()-images.length)
 		const startDate= new Date(offsetDate.toISOString())
 		startDate.setDate(startDate.getDate()-numOfImages + 1)
+
+		if (startDate < lastDate) {console.log("the end of time"); return}
 
         fetchPhoto();
 		localStorage.setItem(DATE_STORAGE_KEY, startDate.toISOString())
@@ -50,6 +52,7 @@ function App() {
 				`https://api.nasa.gov/planetary/apod?start_date=${startDate.toISOString().split("T")[0]}&end_date=${offsetDate.toISOString().split("T")[0]}&api_key=${apiKey}`
 			);
 			const data = await res.json();
+			if (!data) return
 			const likedPosts = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY))
 			for (let i = numOfImages-1; i >= 0; i--) {
 				let liked = false
