@@ -37,24 +37,29 @@ function App() {
 	
 	
 	function generateImages(numOfImages) {
-		const offsetDate = images.length > 0 ? new Date(localStorage.getItem(DATE_STORAGE_KEY)) : new Date()
-		offsetDate.setDate(offsetDate.getDate()-images.length)
+		if (images.length !== 0) clearTimeout(generateImageTimeout)
+
+		const offsetDate = images.length !== 0 ? new Date(localStorage.getItem(DATE_STORAGE_KEY)) : new Date()
 		const startDate= new Date(offsetDate.toISOString())
-		startDate.setDate(startDate.getDate()-numOfImages + 1)
+		startDate.setDate(startDate.getDate()-numOfImages)
 
 		if (startDate < lastDate) {console.log("the end of time"); return}
 
-        fetchPhoto();
 		localStorage.setItem(DATE_STORAGE_KEY, startDate.toISOString())
+		console.log(localStorage.getItem(DATE_STORAGE_KEY));
+		console.log(startDate.toISOString());
+        fetchPhoto();
 
 		async function fetchPhoto() {
 			const res = await fetch(
 				`https://api.nasa.gov/planetary/apod?start_date=${startDate.toISOString().split("T")[0]}&end_date=${offsetDate.toISOString().split("T")[0]}&api_key=${apiKey}`
 			);
 			const data = await res.json();
+			console.log(data);
 			if (!data) return
 			const likedPosts = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY))
 			for (let i = numOfImages-1; i >= 0; i--) {
+				if (!data[i]) {console.log("unexpected error"); continue}
 				let liked = false
 				if (likedPosts && likedPosts.includes(data[i].url)) liked = true
 				updateImages( prevImages=> {
@@ -64,25 +69,23 @@ function App() {
 		}
 	}
 	
+	let generateImageTimeout;
+
 	function loadOnScroll(e) {
 		const scrollThreshold = isMobile? 100:1
 		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= scrollThreshold;
 		let timeOut = false
 		if (bottom && !timeOut) {
 			timeOut = true
-			generateImages(NUM_OF_IMAGES_TO_GENERATE)
-			setTimeout(() => {
-				timeOut = false
-			}, 10000);
+			generateImageTimeout = setTimeout(() => {
+				generateImages(NUM_OF_IMAGES_TO_GENERATE)
+			}, 100);
 		}
 	}
 
 
     useEffect(() => {
 		generateImages(NUM_OF_IMAGES_TO_GENERATE)
-		const currDate = new Date()
-		localStorage.setItem(DATE_STORAGE_KEY, currDate.toISOString())
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
 	<>
