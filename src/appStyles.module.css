@@ -53,20 +53,20 @@
 
 @-webkit-keyframes loading-bounce {
     0% {
-        -transform: translateX(0) scaleY(50%);
+        transform: translateX(0) scaleY(50%);
     }
     25% {
-        -transform: translateX(-500%) scaleY(100%);
+        transform: translateX(-500%) scaleY(100%);
     }
     50% {
-        -transform: translateX(0) scaleY(50%);
+        transform: translateX(0) scaleY(50%);
     }
     75% {
-        -transform: translateX(+500%) scaleY(100%);
+        transform: translateX(+500%) scaleY(100%);
     }
 
     100% {
-        -transform: translateX(0) scaleY(50%);
+        transform: translateX(0) scaleY(50%);
     }
 }
 
