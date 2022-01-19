@@ -89,6 +89,7 @@ function App() {
 
     useEffect(() => {
 		generateImages()
+		window.scrollTo(0,1);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
