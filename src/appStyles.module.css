@@ -78,13 +78,13 @@
 }
 
 @-webkit-keyframes move-twink-back {
-    from {background-position:0 0;}
-    to {background-position:-10000px 5000px;}
+    from {-webkit-background-position:0 0;}
+    to {-webkit-background-position:-10000px 5000px;}
 }
 
 @-webkit-keyframes move-clouds-back {
-    from {background-position:0 0;}
-    to {background-position:10000px 0;}
+    from {-webkit-background-position:0 0;}
+    to {-webkit-background-position:10000px 0;}
 }
 
 .stars {
