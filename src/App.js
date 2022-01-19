@@ -1,7 +1,7 @@
 import ImagesConainer from "./ImagesContainer"
 import styles from './appStyles.module.css'
 import React, { useState, useEffect } from "react"
-import {isMobile} from 'react-device-detect';
+// import {isMobile} from 'react-device-detect';
 
 function App() {
 	const [images, updateImages] = useState([])
@@ -36,12 +36,12 @@ function App() {
 	}
 	
 	
-	function generateImages(numOfImages) {
+	function generateImages() {
 		if (images.length !== 0) clearTimeout(generateImageTimeout)
 
 		const offsetDate = images.length !== 0 ? new Date(localStorage.getItem(DATE_STORAGE_KEY)) : new Date()
 		const startDate= new Date(offsetDate.toISOString())
-		startDate.setDate(startDate.getDate()-numOfImages)
+		startDate.setDate(startDate.getDate()-NUM_OF_IMAGES_TO_GENERATE)
 
 		if (startDate < lastDate) {console.log("the end of time"); return}
 
@@ -58,7 +58,7 @@ function App() {
 			console.log(data);
 			if (!data) return
 			const likedPosts = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY))
-			for (let i = numOfImages-1; i >= 0; i--) {
+			for (let i = NUM_OF_IMAGES_TO_GENERATE-1; i >= 0; i--) {
 				if (!data[i]) {console.log("unexpected error"); continue}
 				let liked = false
 				if (likedPosts && likedPosts.includes(data[i].url)) liked = true
@@ -72,20 +72,23 @@ function App() {
 	let generateImageTimeout;
 
 	function loadOnScroll(e) {
-		const scrollThreshold = isMobile? 100:1
-		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= scrollThreshold;
+		// const scrollThreshold = isMobile? 100:1
+		const bottom = Math.abs(e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight)) <= 1;
+		console.log("scroll height: " + e.target.scrollHeight);
+		console.log("scroll top: " + e.target.scrollTop);
+		console.log("clientHeight: " + e.target.clientHeight);
 		let timeOut = false
 		if (bottom && !timeOut) {
-			timeOut = true
 			generateImageTimeout = setTimeout(() => {
-				generateImages(NUM_OF_IMAGES_TO_GENERATE)
+				generateImages()
+				timeOut = true
 			}, 100);
 		}
 	}
 
 
     useEffect(() => {
-		generateImages(NUM_OF_IMAGES_TO_GENERATE)
+		generateImages()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
