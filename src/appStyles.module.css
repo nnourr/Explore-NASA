@@ -86,6 +86,7 @@
   background:transparent url(twinkle-effect.png) repeat top center;
   z-index:-4;
   animation:move-twink-back 200s linear infinite;
+  -webkit-animation:move-twink-back 200s linear infinite;
 }
 
 .clouds{
