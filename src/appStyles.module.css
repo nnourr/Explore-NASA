@@ -77,6 +77,16 @@
     to {background-position:10000px 0;}
 }
 
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+@-webkit-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+
 .stars {
     background:#000 url(stars.png) repeat top center;
     z-index:-5;
