@@ -102,8 +102,8 @@ function App() {
 				<p className={styles.description}>Scroll through NASA's images of the day!</p>
 				<p className={styles.description}>Click to show description, double click to like.</p>
 				<ImagesConainer images={images} handleShowDescription={handleShowDescription} handleLike={handleLike}/>
+				<div className={styles.loading}></div>
 			</div>
-			<div className={styles.loading}></div>
 		</div>
 	</>
   );
