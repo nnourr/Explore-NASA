@@ -53,20 +53,20 @@
 
 @-webkit-keyframes loading-bounce {
     0% {
-        --webkit-transform: translateX(0) scaleY(50%);
+        -transform: translateX(0) scaleY(50%);
     }
     25% {
-        --webkit-transform: translateX(-500%) scaleY(100%);
+        -transform: translateX(-500%) scaleY(100%);
     }
     50% {
-        --webkit-transform: translateX(0) scaleY(50%);
+        -transform: translateX(0) scaleY(50%);
     }
     75% {
-        --webkit-transform: translateX(+500%) scaleY(100%);
+        -transform: translateX(+500%) scaleY(100%);
     }
 
     100% {
-        --webkit-transform: translateX(0) scaleY(50%);
+        -transform: translateX(0) scaleY(50%);
     }
 }
 
@@ -98,13 +98,13 @@
 }
 
 @-webkit-keyframes move-twink-back {
-    0% {--webkit-background-position:0 0;}
-    100% {--webkit-background-position:-10000px 5000px;}
+    0% {background-position:0 0;}
+    100% {background-position:-10000px 5000px;}
 }
 
 @-webkit-keyframes move-clouds-back {
-    0% {--webkit-background-position:0 0;}
-    100% {--webkit-background-position:10000px 0;}
+    0% {background-position:0 0;}
+    100% {background-position:10000px 0;}
 }
 
 .stars {
