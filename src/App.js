@@ -10,6 +10,7 @@ function App() {
 	const NUM_OF_IMAGES_TO_GENERATE = 10
 	const apiKey = process.env.REACT_APP_NASA_KEY;
 	const lastDate = new Date('1995/06/16')
+	let numError
 
 	function handleShowDescription(id) {
         const newImages = [...images]
@@ -50,6 +51,7 @@ function App() {
 		console.log(startDate.toISOString());
         fetchPhoto();
 
+		numError = 0
 		async function fetchPhoto() {
 			const res = await fetch(
 				`https://api.nasa.gov/planetary/apod?start_date=${startDate.toISOString().split("T")[0]}&end_date=${offsetDate.toISOString().split("T")[0]}&api_key=${apiKey}`
@@ -58,8 +60,13 @@ function App() {
 			console.log(data);
 			if (!data) return
 			const likedPosts = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY))
-			for (let i = NUM_OF_IMAGES_TO_GENERATE-1; i >= 0; i--) {
-				if (!data[i]) {console.log("unexpected error"); continue}
+			for (let i = NUM_OF_IMAGES_TO_GENERATE; i >= 0; i--) {
+				if (!data[i]) {
+					console.log("unexpected error")
+					numError++
+					continue
+					console.log(numError);
+				}
 				let liked = false
 				if (likedPosts && likedPosts.includes(data[i].url)) liked = true
 				updateImages( prevImages=> {
@@ -101,6 +108,7 @@ function App() {
 				<h1 className={styles.title}>Explore NASA</h1>
 				<p className={styles.description}>Scroll through NASA's images of the day!</p>
 				<p className={styles.description}>Click to show description, double click to like.</p>
+				{numError === NUM_OF_IMAGES_TO_GENERATE ? <h className={styles.title}>Error getting NASA Images</h> : null}
 				<ImagesConainer images={images} handleShowDescription={handleShowDescription} handleLike={handleLike}/>
 			</div>
 		</div>
