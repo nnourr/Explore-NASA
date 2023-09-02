@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Explore-NASA/static/css/main.609fc420.css",
+    "main.js": "/Explore-NASA/static/js/main.6aa4eff2.js",
+    "static/media/stars.png": "/Explore-NASA/static/media/stars.90c266f7d69f1ffb6137.png",
+    "static/media/clouds.png": "/Explore-NASA/static/media/clouds.655c9c060e6309ec9edf.png",
+    "index.html": "/Explore-NASA/index.html",
+    "main.609fc420.css.map": "/Explore-NASA/static/css/main.609fc420.css.map",
+    "main.6aa4eff2.js.map": "/Explore-NASA/static/js/main.6aa4eff2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.609fc420.css",
+    "static/js/main.6aa4eff2.js"
+  ]
+}
