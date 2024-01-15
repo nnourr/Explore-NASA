@@ -2,7 +2,7 @@
     "name": "nasa-images",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://nnourr.tech",
+    "homepage": " https://nnourr.github.io/Explore-NASA/",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^12.1.2",
@@ -20,7 +20,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "predeploy": "npm run build",
-        "deploy": "echo nnourr.tech > ./build/CNAME && gh-pages -d build"
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
