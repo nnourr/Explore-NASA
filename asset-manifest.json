@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.29a8787b.css",
-    "main.js": "/static/js/main.6aa4eff2.js",
-    "static/media/stars.png": "/static/media/stars.90c266f7d69f1ffb6137.png",
-    "static/media/clouds.png": "/static/media/clouds.655c9c060e6309ec9edf.png",
-    "index.html": "/index.html",
-    "main.29a8787b.css.map": "/static/css/main.29a8787b.css.map",
-    "main.6aa4eff2.js.map": "/static/js/main.6aa4eff2.js.map"
+    "main.css": "/Explore-NASA/static/css/main.e7dfea5b.css",
+    "main.js": "/Explore-NASA/static/js/main.6aa4eff2.js",
+    "static/media/stars.png": "/Explore-NASA/static/media/stars.90c266f7d69f1ffb6137.png",
+    "static/media/clouds.png": "/Explore-NASA/static/media/clouds.655c9c060e6309ec9edf.png",
+    "index.html": "/Explore-NASA/index.html",
+    "main.e7dfea5b.css.map": "/Explore-NASA/static/css/main.e7dfea5b.css.map",
+    "main.6aa4eff2.js.map": "/Explore-NASA/static/js/main.6aa4eff2.js.map"
   },
   "entrypoints": [
-    "static/css/main.29a8787b.css",
+    "static/css/main.e7dfea5b.css",
     "static/js/main.6aa4eff2.js"
   ]
 }
